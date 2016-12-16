@@ -38,7 +38,7 @@ public class TwoFragment extends Fragment{
                              Bundle savedInstanceState) {
        // return inflater.inflate(R.layout.fragment_two, container, false);
 
-        View rootView = inflater.inflate(R.layout.content_main, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_two, container, false);
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
 
@@ -50,6 +50,8 @@ public class TwoFragment extends Fragment{
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
+
+        prepareAlbums();
 
         return rootView;
     }
