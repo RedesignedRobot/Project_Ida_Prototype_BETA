@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import com.aaxs.nitrov17.project_ida_prototype_beta.OneFragment;
 import com.aaxs.nitrov17.project_ida_prototype_beta.R;
 import com.aaxs.nitrov17.project_ida_prototype_beta.TwoFragment;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,10 +38,8 @@ public class MainActivity extends AppCompatActivity {
         setupViewPager(viewPager);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
+        tabLayout.setupWithViewPager(viewPager);}
 
-
-    }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
