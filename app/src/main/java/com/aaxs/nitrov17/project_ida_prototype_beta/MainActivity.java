@@ -1,6 +1,7 @@
 package com.aaxs.nitrov17.project_ida_prototype_beta;
 
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,6 +9,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.aaxs.nitrov17.project_ida_prototype_beta.OneFragment;
 import com.aaxs.nitrov17.project_ida_prototype_beta.R;
@@ -38,7 +40,50 @@ public class MainActivity extends AppCompatActivity {
         setupViewPager(viewPager);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);}
+        tabLayout.setupWithViewPager(viewPager);
+
+        AppBarLayout.LayoutParams p = (AppBarLayout.LayoutParams) toolbar.getLayoutParams();
+        p.setScrollFlags(0);
+        toolbar.setLayoutParams(p);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        getSupportActionBar().setTitle("Home");
+        //getSupportActionBar().setLogo();
+        //getSupportActionBar().setDisplayUseLogoEnabled();
+
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                checkTab(tab);
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+                checkTab(tab);
+
+            }
+        });
+        }
+
+    private void checkTab(TabLayout.Tab tab) {
+
+        String text;
+        if(tab.getText()=="1"){
+            setActionBarTitle("Home");
+        }
+        else if(tab.getText()=="2"){
+            setActionBarTitle("Wallpapers");
+        }
+        else if(tab.getText()=="3"){
+            setActionBarTitle("Donate");
+        }
+    }
 
 
     private void setupViewPager(ViewPager viewPager) {
@@ -76,5 +121,9 @@ public class MainActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);
         }
+    }
+
+    public void setActionBarTitle(String title) {
+        getSupportActionBar().setTitle(title);
     }
 }
