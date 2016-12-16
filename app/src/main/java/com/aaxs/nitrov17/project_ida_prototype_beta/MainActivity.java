@@ -1,5 +1,7 @@
 package com.aaxs.nitrov17.project_ida_prototype_beta;
 
+import android.app.WallpaperManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
@@ -15,6 +17,7 @@ import com.aaxs.nitrov17.project_ida_prototype_beta.OneFragment;
 import com.aaxs.nitrov17.project_ida_prototype_beta.R;
 import com.aaxs.nitrov17.project_ida_prototype_beta.TwoFragment;
 import com.bumptech.glide.Glide;
+import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Intent intent = new Intent(WallpaperManager.ACTION_LIVE_WALLPAPER_CHOOSER);
+        //startActivity(intent);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -92,6 +98,8 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(new TwoFragment(), "2");
         adapter.addFragment(new ThreeFragment(), "3");
         viewPager.setAdapter(adapter);
+        SmartTabLayout viewPagerTab = (SmartTabLayout) findViewById(R.id.viewpagertab);
+        viewPagerTab.setViewPager(viewPager);
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
