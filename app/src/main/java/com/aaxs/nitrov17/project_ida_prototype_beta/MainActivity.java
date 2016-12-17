@@ -12,6 +12,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
 import com.aaxs.nitrov17.project_ida_prototype_beta.OneFragment;
 import com.aaxs.nitrov17.project_ida_prototype_beta.R;
@@ -101,6 +102,11 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
     }
 
+    public void positionActivity(View view) {
+        int position = (int) view.getTag();
+        Toast.makeText(view.getContext(),Integer.toString(position), Toast.LENGTH_SHORT).show();
+    }
+
     class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
@@ -133,4 +139,5 @@ public class MainActivity extends AppCompatActivity {
     public void setActionBarTitle(String title) {
         getSupportActionBar().setTitle(title);
     }
+
 }
