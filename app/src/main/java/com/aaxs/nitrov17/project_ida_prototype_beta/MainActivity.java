@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private SmartTabLayout viewPagerTab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,8 +99,6 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(new TwoFragment(), "2");
         adapter.addFragment(new ThreeFragment(), "3");
         viewPager.setAdapter(adapter);
-        SmartTabLayout viewPagerTab = (SmartTabLayout) findViewById(R.id.viewpagertab);
-        viewPagerTab.setViewPager(viewPager);
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
