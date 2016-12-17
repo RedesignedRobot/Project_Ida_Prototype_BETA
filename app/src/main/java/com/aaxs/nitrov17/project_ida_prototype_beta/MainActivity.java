@@ -1,6 +1,7 @@
 package com.aaxs.nitrov17.project_ida_prototype_beta;
 
 import android.app.WallpaperManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import com.aaxs.nitrov17.project_ida_prototype_beta.OneFragment;
 import com.aaxs.nitrov17.project_ida_prototype_beta.R;
 import com.aaxs.nitrov17.project_ida_prototype_beta.TwoFragment;
+import com.aaxs.nitrov17.project_ida_prototype_beta.Wallpaper1;
 import com.bumptech.glide.Glide;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
@@ -31,11 +33,12 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private SmartTabLayout viewPagerTab;
 
+    public MainActivity(){}
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         //Intent intent = new Intent(WallpaperManager.ACTION_LIVE_WALLPAPER_CHOOSER);
         //startActivity(intent);
 
@@ -102,10 +105,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
     }
 
-    public void positionActivity(View view) {
-        int position = (int) view.getTag();
-        Toast.makeText(view.getContext(),Integer.toString(position), Toast.LENGTH_SHORT).show();
-    }
+
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
@@ -138,6 +138,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void setActionBarTitle(String title) {
         getSupportActionBar().setTitle(title);
+    }
+
+    public void wallpaperDisplay(Context context, int position){
+
+        if(position==0){
+
+
+            Intent intent = new Intent(context, Wallpaper1.class);
+            this.startActivity(intent);
+        }
     }
 
 }

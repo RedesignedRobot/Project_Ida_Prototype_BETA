@@ -47,7 +47,7 @@ public class TwoFragment extends Fragment{
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
 
         albumList = new ArrayList<>();
-        adapter = new AlbumsAdapter(getContext(), albumList);
+        adapter = new AlbumsAdapter(getActivity(), albumList);
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 2);
         recyclerView.setLayoutManager(mLayoutManager);

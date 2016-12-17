@@ -4,6 +4,7 @@ package com.aaxs.nitrov17.project_ida_prototype_beta;
  * Created by NitroV17 on 11/24/2016.
  */
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
@@ -27,6 +28,7 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
 
     private Context mContext;
     private List<Album> albumList;
+    public MainActivity mainActivity = new MainActivity();
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
         public TextView title, count;
@@ -67,7 +69,10 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
         holder.thumbnail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("*****LOG*****", String.valueOf(position));
+                //Log.d("*****LOG*****", String.valueOf(position));
+                if(mContext instanceof MainActivity){
+                    ((MainActivity)mContext).wallpaperDisplay(mContext, position);
+                }
             }
         });
 
@@ -118,4 +123,5 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
     public int getItemCount() {
         return albumList.size();
     }
+
 }
